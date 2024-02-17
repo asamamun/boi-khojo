@@ -1,0 +1,489 @@
+
+https://en.wikipedia.org/wiki/Upazila
+
+DROP SCHEMA IF EXISTS book;
+CREATE SCHEMA book;
+USE book;
+
+--
+-- Table structure for table `users`
+--
+
+
+CREATE TABLE `users` (
+  `id` SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `full_name` VARCHAR(255) NOT NULL,
+  `mobile` VARCHAR(255) NOT NULL,
+  `password` VARCHAR(255) NOT NULL,
+  `created_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+userprofile(id,uid,details,fbid,ytlink,profile_image,created)
+
+--
+-- Table structure for table `division`
+--
+
+CREATE TABLE `division` (
+  `id` SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(100) NOT NULL,
+  `created` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+
+--
+-- Table structure for table `district`
+--
+
+CREATE TABLE `district` (
+  `id` SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(100) NOT NULL,
+  `division_id` SMALLINT NOT NULL,
+  `created` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Table structure for table `area`
+--
+
+CREATE TABLE `area` (
+  `id` SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(100) NOT NULL,
+  `district_id` SMALLINT NOT NULL,
+  `division_id` SMALLINT NOT NULL,
+  `created` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+--
+-- Table structure for table `author`
+--
+
+CREATE TABLE `author`(
+  `id` SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(255) NOT NULL,
+  `details` varchar(512) NOT NULL,
+  `created` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+--
+-- Table structure for table `publications`
+--
+
+CREATE TABLE `publications`(
+  `id` SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(255) NOT NULL,
+  `details` varchar(512) NOT NULL,
+  `created` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+--
+-- Table structure for table `categories`
+--
+
+CREATE TABLE `categories`(
+  `id` SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(255) NOT NULL,
+  `created` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+subcategory(id,cid,name,created)
+bookposts(id,name,details,price1,price2,type(new,used), uid, cid,scid, divid,distid,areaid, created,deleted)
+
+
+message(id, bookpostid,selleruser1, buyeruser2, messages, created)
+profile(id,uid,status,image1,image2,lat,lng,aboutme,divid,distid,areaid,created)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--
+-- Dumping data for table division
+--
+
+INSERT INTO division (`division_id`, `division`, `created_time`) VALUES
+(NULL,'Dhaka',NULL),
+(NULL,'Chittagong',NULL),
+(NULL,'Barisal',NULL),
+(NULL,'Khulna',NULL),
+(NULL,'Rajshahi',NULL),
+(NULL,'Sylhet',NULL),
+(NULL,'Rangpur',NULL),
+(NULL,'Mymensingh',NULL);
+
+
+--
+-- Dumping data for table district
+--
+
+INSERT INTO district (`district_id`, `district`, `division_id`, `created_time`) VALUES
+(NULL, 'Dhaka', '1', NULL),
+(NULL, 'Gazipur', '1', NULL),
+(NULL, 'Gopalganj', '1', NULL),
+(NULL, 'Kishoreganj', '1', NULL),
+(NULL, 'Madaripur', '1', NULL),
+(NULL, 'Manikganj', '1', NULL),
+(NULL, 'Munshiganj', '1', NULL),
+(NULL, 'Narayanganj', '1', NULL),
+(NULL, 'Rajbari', '1', NULL),
+(NULL, 'Shariatpur', '1', NULL),
+(NULL, 'Faridpur', '1', NULL),
+(NULL, 'Tangail', '1', NULL),
+(NULL, 'Narsingdi', '1', NULL),
+(NULL, 'Bandarban', '2', NULL),
+(NULL, 'Brahmanbaria', '2', NULL),
+(NULL, 'Bandarban', '2', NULL),
+(NULL, 'Bandarban', '2', NULL),
+(NULL, 'Bandarban', '2', NULL),
+(NULL, 'Bandarban', '2', NULL),
+(NULL, 'Bandarban', '2', NULL),
+(NULL, 'Bandarban', '2', NULL),
+(NULL, 'Bandarban', '2', NULL),
+(NULL, 'Bandarban', '2', NULL),
+(NULL, 'Bandarban', '2', NULL),
+(NULL, 'Bandarban', '2', NULL),
+(NULL, 'Bandarban', '2', NULL),
+(NULL, 'Bandarban', '2', NULL),
+(NULL, 'Bandarban', '2', NULL),
+(NULL, 'Bandarban', '2', NULL),
+(NULL, 'Bandarban', '2', NULL),
+
+
+--
+-- Dumping data for table area
+--
+
+INSERT INTO area (`area_id`, `area`, `district_id`, `division_id`, `created_time`) VALUES (NULL, 'Dhamrai', '1', '1', NULL),
+(NULL, 'Dohar', '1', '1', NULL),
+(NULL, 'Keraniganj', '1', '1', NULL),
+(NULL, 'Nawabganj', '1', '1', NULL),
+(NULL, 'Savar', '1', '1', NULL),
+(NULL, 'Gazipur', '2', '1', NULL),
+(NULL, 'Gazipur', '2', '1', NULL),
+(NULL, 'Gazipur', '2', '1', NULL),
+(NULL, 'Gazipur', '2', '1', NULL),
+(NULL, 'Gazipur', '2', '1', NULL),
+(NULL, 'Gazipur', '2', '1', NULL),
+(NULL, 'Gazipur', '2', '1', NULL),
+(NULL, 'Gazipur', '2', '1', NULL),
+(NULL, 'Gazipur', '2', '1', NULL),
+(NULL, 'Gazipur', '2', '1', NULL),
+
+
+
+
+--
+-- Dumping data for table author
+--
+
+INSERT INTO `author` (`id`, `name`, `created_time`) VALUES
+(NULL,'Humayun Ahmed',NULL),
+(NULL,'Kazi Nazrul Islam',NULL),
+(NULL,'Rabindranath Tagore',NULL),
+(NULL,'Abdul Hakim',NULL),
+(NULL,'Abu Ishaque',NULL),
+(NULL,'Abul Mansur Ahmed',NULL),
+(NULL,'Abdullah Abu Sayeed',NULL),
+(NULL,'Abdush Shakoor',NULL),
+(NULL,'Abu Rushd',NULL),
+(NULL,'Abdur Rouf Choudhury',NULL),
+(NULL,'Abul Fazal',NULL),
+(NULL,'Abdul Mannan Syed',NULL),
+(NULL,'Akhteruzzaman Elias',NULL),
+(NULL,'Al Mahmud',NULL),
+(NULL,'Alaol',NULL),
+(NULL,'Alauddin Al-Azad',NULL),
+(NULL,'Anisul Hoque',NULL),
+(NULL,'Anwar Pasha',NULL),
+(NULL,'Aly Zaker',NULL),
+(NULL,'Ahsan Habib',NULL),
+(NULL,'Ahmed Sofa',NULL),
+(NULL,'Aroj Ali Matubbar',NULL),
+(NULL,'Asad Chowdhury',NULL),
+(NULL,'Bande Ali Mia',NULL),
+(NULL,'Begum Rokeya',NULL),
+(NULL,'Bipradash Barua',NULL),
+(NULL,'Dilwar Khan',NULL),
+(NULL,'Dilara Hashem',NULL),
+(NULL,'Farah Ghuznavi',NULL),
+(NULL,'Farrukh Ahmad',NULL),
+(NULL,'Golam Mostofa',NULL),
+(NULL,'Harun Ar Rashid',NULL),
+(NULL,'Humayun Azad',NULL),
+(NULL,'Hasan Azizul Huq',NULL),
+(NULL,'Hason Raja',NULL),
+(NULL,'Hasnat Abdul Hye',NULL),
+(NULL,'Humayun Kabir Dhali',NULL),
+(NULL,'Husne Ara Shahed',NULL),
+(NULL,'Imdadul Haq Milan',NULL),
+(NULL,'Ismail Hossain Siraji',NULL),
+(NULL,'Jahanara Imam',NULL),
+(NULL,'Jasimuddin',NULL),
+(NULL,'Shahid Mahmud Jangi',NULL),
+(NULL,'Kaberi Gain',NULL),
+(NULL,'Kabir Chowdhury',NULL),
+(NULL,'Kaykobad',NULL),
+(NULL,'K. Anis Ahmed',NULL),
+(NULL,'Khondakar Ashraf Hossain',NULL),
+(NULL,'Mir Mosharraf Hossain',NULL),
+(NULL,'Moinul Ahsan Saber',NULL),
+(NULL,'Muhammad Asadullah Al-Ghalib',NULL),
+(NULL,'Mohammad Barkatullah',NULL),
+(NULL,'Mohammad Lutfur Rahman',NULL),
+(NULL,'Mokbula Manzoor',NULL),
+(NULL,'Mohammad Nurul Huda',NULL),
+(NULL,'MymeMuhammed Zafar Iqbalnsingh',NULL),
+(NULL,'Muhammad Mansuruddin',NULL),
+(NULL,'Muhammad Shahidullah',NULL),
+(NULL,'Munier Choudhury',NULL),
+(NULL,'M Sakhawat Hossain',NULL),
+(NULL,'Nurul Momen',NULL),
+(NULL,'Nirmalendu Goon',NULL),
+(NULL,'Neamat Imam',NULL),
+(NULL,'Nilima Ibrahim',NULL),
+(NULL,'Rahat Khan',NULL),
+(NULL,'Rashid Askari',NULL),
+(NULL,'Rashid Haider',NULL),
+(NULL,'Rashid Karim',NULL),
+(NULL,'Razia Khan',NULL),
+(NULL,'Rizia Rahman',NULL),
+(NULL,'Rudra Mohammad Shahidullah',NULL),
+(NULL,'Sadat Hossain',NULL),
+(NULL,'Selim Al Deen',NULL),
+(NULL,'Selina Hossain',NULL),
+(NULL,'Shaheen Akhtar',NULL),
+(NULL,'Shahidullah Kaiser',NULL),
+(NULL,'Shahidul Zahir',NULL),
+(NULL,'Shamsuddin Abul Kalam',NULL),
+(NULL,'Shamsur Rahman',NULL),
+(NULL,'Shawkat Ali',NULL),
+(NULL,'Shawkat Osman',NULL),
+(NULL,'Shazia Omar',NULL),
+(NULL,'Sufia Kamal',NULL),
+(NULL,'Sheikh Fazlul Karim',NULL),
+(NULL,'Syed Ali Ahsan',NULL),
+(NULL,'Syed Mujtaba Ali',NULL),
+(NULL,'Syed Shamsul Haque',NULL),
+(NULL,'Syed Waliullah',NULL),
+(NULL,'Saad Z Hossain',NULL),
+(NULL,'Taslima Nasrin',NULL),
+(NULL,'Tahmima Anam',NULL),
+(NULL,'Zahir Raihan',NULL),
+(NULL,'Mymensingh',NULL),
+(NULL,'Mymensingh',NULL),
+
+
+--
+-- Dumping data for table publications
+--
+
+INSERT INTO `publications` (`id`, `name`, `created_time`) VALUES
+(NULL,'Janani Publication',NULL),
+(NULL,'The Bookworm',NULL),
+(NULL,'SEAN Publication',NULL),
+(NULL,'Parma Publishers and Distributors',NULL),
+(NULL,'Nymphea Publication',NULL),
+(NULL,'Sylhet',NULL),
+(NULL,'Rangpur',NULL),
+(NULL,'Hakkani Publishers',NULL),
+(NULL,'Adorn Publication',NULL),
+(NULL,'Bangladesh law book company',NULL),
+(NULL,'Guardian Publications',NULL),
+(NULL,'Tamralipi',NULL),
+(NULL,'Little magazine kobitay jagoron',NULL),
+(NULL,'Prothoma',NULL),
+(NULL,'Tawheed Publications',NULL),
+(NULL,'Parash Publishers',NULL),
+(NULL,'Pathak Shamabesh Centre',NULL),
+(NULL,'Dipu Books and Publishers',NULL),
+(NULL,'Mowla Brothers',NULL),
+(NULL,'Seba Prokashoni',NULL),
+(NULL,'Kathprokash',NULL),
+(NULL,'Liton Publication',NULL),
+(NULL,'Al Fatah Publications',NULL),
+(NULL,'Banglayan',NULL),
+(NULL,'Ahsan Publication',NULL),
+(NULL,'Bangla Book',NULL),
+(NULL,'Panjeree Publications Limited',NULL),
+(NULL,'Bangladesh Co-operative Book Society Ltd',NULL),
+(NULL,'Agamee Prakashani',NULL),
+(NULL,'Bud Comprint & Publications',NULL),
+(NULL,'Pendulum Publishers',NULL),
+(NULL,'progoti publisher',NULL),
+(NULL,'Muslim Village',NULL),
+(NULL,'Bangladesh Publisher & Booksellers Association',NULL),
+(NULL,'Pearl Publications',NULL),
+(NULL,'Shomoy Prokashon',NULL),
+(NULL,'Book House',NULL),
+(NULL,'Bengal Lights',NULL),
+(NULL,'Panjeree Publications Ltd.',NULL),
+(NULL,'Journeyman Books',NULL),
+(NULL,'Shaurov Publishers & Distributors',NULL),
+(NULL,'Friends Book Corner Publication office',NULL),
+(NULL,'A H Development Publishing House',NULL),
+(NULL,'Darussalam Publication',NULL),
+(NULL,'Kakoli Prokashoni',NULL),
+(NULL,'Shahitya Prakash',NULL),
+(NULL,'Maktabatul Islam',NULL),
+(NULL,'Publishers & Booksellers',NULL),
+(NULL,'The Bookworm',NULL),
+(NULL,'Worthy Publications',NULL),
+(NULL,'Boikhata.com.bd',NULL),
+(NULL,'Rabya Book House',NULL),
+(NULL,'Murdhonno Publication',NULL),
+(NULL,'Student Ways',NULL),
+(NULL,'Jupiter Publications',NULL),
+(NULL,'Banglabazar Book Market',NULL),
+(NULL,'Rodela Prokashoni',NULL),
+(NULL,'Panjeri Publication Ltd.',NULL),
+(NULL,'Nasib Publications',NULL),
+(NULL,'Afsar Brothers',NULL),
+(NULL,'Prothoma Prokashon',NULL),
+(NULL,'Jatiyo Sahitto Prokash',NULL),
+(NULL,'Annesha Prokashon',NULL),
+(NULL,'Papyrus',NULL),
+(NULL,'Shikha Prokashoni',NULL),
+(NULL,'Kobi Prokashoni',NULL),
+(NULL,'Universal Publications',NULL),
+(NULL,'Kabir publications',NULL),
+(NULL,'Academia Publishing House Ltd',NULL),
+(NULL,'Lubdhak Prokashon Ltd. (Mizan Publishers)',NULL),
+(NULL,'muktienterprise27dec',NULL),
+(NULL,'Nobojug Prokashani',NULL),
+(NULL,'Modern publications',NULL),
+(NULL,'Anannya Prokashoni',NULL),
+(NULL,'The Jamuna Publishers',NULL),
+(NULL,'Graphosman Publication',NULL),
+(NULL,'Jaitya Sahitya Prokashanee',NULL),
+(NULL,'Suchayani Publishers',NULL),
+(NULL,'Paragon Publishers',NULL),
+(NULL,'Ananda Book Supply-2',NULL),
+(NULL,'eBoighar',NULL),
+(NULL,'Jhinuk Prokashoni',NULL),
+(NULL,'Pillars Publications',NULL),
+(NULL,'Mashik Madina Publications',NULL),
+(NULL,'ANUPAM PRAKASHANI',NULL),
+(NULL,'Academic Press and Publishers (APPL)',NULL),
+(NULL,'Bishwa Bichitra',NULL),
+(NULL,'Oitijjo',NULL),
+(NULL,'Shaurov Publishers & Distributors',NULL),
+(NULL,'Md Jakir Hossain',NULL),
+(NULL,'Professor's Publications',NULL),
+(NULL,'Royal Publishers',NULL),
+(NULL,'Nilkhet books market',NULL),
+(NULL,'Gyangriha Prokashoni',NULL),
+(NULL,'Nawroze Sahitya Samvar',NULL),
+(NULL,'The Model Publishers',NULL),
+(NULL,'Gyankosh',NULL),
+(NULL,'Joy Publishers',NULL),
+(NULL,'Hemal Publications',NULL),
+(NULL,'Foysal Publishers',NULL),
+(NULL,'Jonaki Prokashoni',NULL),
+(NULL,'Utsho Prokashon',NULL),
+(NULL,'The University Press Limited',NULL),
+(NULL,'Paper Voyager Publications',NULL),
+(NULL,'Muhammad Brothers',NULL),
+(NULL,'Bishwa Kosh',NULL),
+(NULL,'Ahmed Publishing House',NULL),
+(NULL,'Omicon Publishing House',NULL),
+(NULL,'Cintasutro ',NULL),
+(NULL,'Rupok Book House',NULL),
+(NULL,'Rubi Enterprise',NULL),
+(NULL,'BOITARANGA',NULL),
+(NULL,'Seagull Publications',NULL),
+(NULL,'Bangladesh Taj Company LTDymensingh',NULL),
+(NULL,'Hasan Book Depot',NULL),
+(NULL,'Life Publishers',NULL),
+(NULL,'Mullick & Brothers',NULL),
+(NULL,'Nobel Publishing House',NULL),
+(NULL,'panjery publications Ltd.',NULL),
+(NULL,'Tamanna Book House',NULL),
+(NULL,'Gazi Prokashani',NULL),
+(NULL,'Bengal Boi',NULL),
+(NULL,'Progati Publishers',NULL),
+(NULL,'HAB International',NULL),
+(NULL,'Anindya Prokash',NULL),
+(NULL,'Bidhyalay Publications',NULL),
+(NULL,'Book publication',NULL),
+(NULL,'Isabela.com.bd',NULL),
+(NULL,'BoiBazar.com',NULL),
+(NULL,'Book Point',NULL),
+(NULL,'Nilkhet Modern Library',NULL),
+(NULL,'Shova Prokash',NULL),
+(NULL,'Dhaka Comics Studios',NULL),
+(NULL,'Bright Publishers',NULL),
+(NULL,'Allied Book Center',NULL),
+(NULL,'The Bangladesh Book Corner',NULL),
+(NULL,'Bangladesh Islamic Centre',NULL),
+(NULL,'Redleaf Publishing',NULL),
+(NULL,'The University Press Limited',NULL),
+(NULL,'Joyotee',NULL),
+(NULL,'Mymensingh',NULL),
+
+
+
+
+
+--
+-- Dumping data for table category
+--
+
+INSERT INTO `category` (`id`, `name`, `created_time`) VALUES
+(NULL,'Engineering ',NULL),
+(NULL,'Novel',NULL),
+(NULL,'History and tradition',NULL),
+(NULL,'Games',NULL),
+(NULL,'Rabindranath ',NULL),
+(NULL,'Comics',NULL),
+(NULL,'Computer',NULL),
+(NULL,'Agriculture & Farmers',NULL),
+(NULL,'journalism',NULL),
+(NULL,'Mathematical',NULL),
+(NULL,'Science and technology',NULL),
+(NULL,'Biography',NULL),
+(NULL,'Philosophy',NULL),
+(NULL,'Religious',NULL),
+(NULL,'Drama',NULL),
+(NULL,'Animals life',NULL),
+(NULL,'Essay',NULL),
+(NULL,'Language',NULL),
+(NULL,'Fashion',NULL),
+(NULL,'Teenagers Books',NULL),
+(NULL,'Politics',NULL),
+(NULL,'Cooking',NULL),
+(NULL,'Crafts/Hobbies',NULL),
+(NULL,'Dictionary',NULL),
+(NULL,'Encyclopedia',NULL),
+(NULL,'Memoir',NULL),
+(NULL,'Business',NULL),
+(NULL,'Entertantment',NULL),
+(NULL,'Gay & Lesbian',NULL),
+(NULL,'Mysteries',NULL),
+(NULL,'Parenting',NULL),
+(NULL,'Self Help',NULL),
+(NULL,'Teen',NULL),
+(NULL,'True Crime',NULL),
+(NULL,'Westerns',NULL),
+(NULL,'Tagore',NULL),
+
+

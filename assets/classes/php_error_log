@@ -1,0 +1,14 @@
+[23-Mar-2022 18:40:43 Asia/Dhaka] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown database 'boikhujo.com' in F:\xampp\htdocs\r49\PHP\projects\boikhojo\project-master\connection.php:2
+Stack trace:
+#0 F:\xampp\htdocs\r49\PHP\projects\boikhojo\project-master\connection.php(2): mysqli->__construct('localhost', 'root', '', 'boikhujo.com')
+#1 F:\xampp\htdocs\r49\PHP\projects\boikhojo\project-master\assets\classes\division.php(2): require('F:\\xampp\\htdocs...')
+#2 {main}
+  thrown in F:\xampp\htdocs\r49\PHP\projects\boikhojo\project-master\connection.php on line 2
+[23-Mar-2022 18:42:13 Asia/Dhaka] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown database 'boikhujo.com' in F:\xampp\htdocs\r49\PHP\projects\boikhojo\project-master\connection.php:2
+Stack trace:
+#0 F:\xampp\htdocs\r49\PHP\projects\boikhojo\project-master\connection.php(2): mysqli->__construct('localhost', 'root', '', 'boikhujo.com')
+#1 F:\xampp\htdocs\r49\PHP\projects\boikhojo\project-master\assets\classes\division.php(2): require('F:\\xampp\\htdocs...')
+#2 {main}
+  thrown in F:\xampp\htdocs\r49\PHP\projects\boikhojo\project-master\connection.php on line 2
+[23-Mar-2022 18:45:26 Asia/Dhaka] PHP Warning:  Undefined variable $selectResult in F:\xampp\htdocs\r49\PHP\projects\boikhojo\project-master\assets\classes\district.php on line 7
+[23-Mar-2022 18:45:26 Asia/Dhaka] PHP Warning:  Attempt to read property "num_rows" on null in F:\xampp\htdocs\r49\PHP\projects\boikhojo\project-master\assets\classes\district.php on line 7

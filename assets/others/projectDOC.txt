@@ -1,0 +1,12 @@
+what is the project?
+
+why? who are the clients?
+
+the project modules?
+
+database design
+tables and relations
+
+what have been done so far...
+
+what you will show in next exam 
